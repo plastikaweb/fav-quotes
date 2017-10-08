@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavParams } from 'ionic-angular';
 import { Quote, QuotesCollectionItem } from '../../models/quotes';
 import { QuotesService } from '../../services/quotes.service';
 
+@IonicPage()
 @Component({
   selector: 'page-quotes',
   templateUrl: 'quotes.html',
@@ -39,5 +40,13 @@ export class QuotesPage implements OnInit {
     });
 
     alert.present();
+  }
+
+  removeFromFavorites(quote: Quote) {
+    this.quotesService.removeQuoteFromFav(quote);
+  }
+
+  isFavorite(quote: Quote) {
+    return this.quotesService.isQuoteFavorite(quote);
   }
 }

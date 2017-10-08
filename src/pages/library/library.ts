@@ -1,9 +1,11 @@
 import { QuotesCollectionItem } from '../../models/quotes';
 import { Component, OnInit } from '@angular/core';
+import { IonicPage } from 'ionic-angular';
 
 import quotes from '../../data/quotes';
 import { QuotesPage } from '../quotes/quotes';
 
+@IonicPage()
 @Component({
   selector: 'page-library',
   templateUrl: 'library.html'
