@@ -4,6 +4,7 @@ import { IonicPage, ModalController } from 'ionic-angular';
 import { Quote } from '../../models/quotes';
 import { QuotesService } from '../../services/quotes.service';
 import { QuotePage } from '../quote/quote';
+import { SettingsService } from '../../services/settings.service';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,7 @@ import { QuotePage } from '../quote/quote';
 export class FavoritesPage {
   quotes: Quote[];
 
-  constructor(private quotesService: QuotesService, private modalController: ModalController) {
+  constructor(private quotesService: QuotesService, private modalController: ModalController, private settingsService: SettingsService) {
   }
 
   ionViewWillEnter() {
@@ -33,5 +34,9 @@ export class FavoritesPage {
   removeFromFavorites(quote: Quote) {
     this.quotesService.removeQuoteFromFav(quote);
     this.quotes = this.quotesService.getFavoriteQuotes();
+  }
+
+  changeBg() {
+    return this.settingsService.isAltBackground();
   }
 }
